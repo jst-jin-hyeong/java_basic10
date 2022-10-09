@@ -1,0 +1,26 @@
+package com.spring.oop.basic;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class PersonTest {
+    @Test
+    @DisplayName("강아지를 정상적으로 분양받아야 한다.")
+    void personTest(){
+        //given: 테스트시 제공할 데이터
+        // 사람과 펫샵이 필요하다. Dog는 펫샵에서 줄 테니까.
+        Person kim = new Person("김철수");
+        Person park = new Person("박영희");
+        PetShop dogLover = new PetShop();
+
+        //when: 테스트 상황
+        kim.takeDog(dogLover);
+        park.takeDog(dogLover);
+
+        //then: 테스트 결과
+        assertEquals("해피", kim.getMyDogName());
+        assertEquals("뽀삐", park.getMyDogName());
+    }
+}
